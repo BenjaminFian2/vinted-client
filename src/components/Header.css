@@ -1,0 +1,71 @@
+.Header {
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Header-logo {
+  height: 45px;
+}
+
+.box-Header-input {
+  position: relative;
+  display: flex;
+}
+
+.Header-input {
+  border: none;
+  outline: none;
+}
+
+.Header-input {
+  width: 500px;
+  padding-left: 40px;
+  background-color: #f5f6f7;
+  border-radius: 5px;
+  height: 37px;
+  font-size: 16px;
+}
+
+.Header-icon-search {
+  position: absolute;
+  left: 7px;
+  top: 11px;
+}
+
+.Header button {
+  height: 30px;
+  width: 115px;
+  border-radius: 5px;
+  font-family: "Maison Neue";
+  font-size: 14px;
+  outline: none;
+}
+
+.Header button:hover {
+  cursor: pointer;
+}
+
+.Header-register,
+.Header-login {
+  background-color: #fff;
+  color: #2cb1ba;
+  border: 1px solid #2cb1ba;
+}
+
+.Header-login {
+  margin-left: -200px;
+}
+
+.Header-sell {
+  background-color: #2cb1ba;
+  color: white;
+  border: none;
+}
+
+.Header-disconnected {
+  background-color: #c2175b;
+  color: white;
+  border: none;
+}

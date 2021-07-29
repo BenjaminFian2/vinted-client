@@ -1,1 +1,32 @@
-/* Other rules */
+/*import fonts*/
+@font-face {
+  font-family: "Helvetica";
+  src: local("Helvetica"), url(./assets/fonts/Helvetica.ttf) format("ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: local("HelveticaNeueBold"),
+    url(./assets/fonts/HelveticaNeueBold.woff) format("woff");
+  font-weight: bold;
+}
+
+/*Global*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+}
+
+.App {
+  font-family: "helvetica";
+}
+
+h2 {
+  font-size: 25px;
+  margin: 20px 0;
+}

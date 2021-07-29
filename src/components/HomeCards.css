@@ -1,0 +1,6 @@
+.HomeCards {
+  width: 1280px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px auto 30px auto;
+}

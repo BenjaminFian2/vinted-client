@@ -1,0 +1,58 @@
+.Pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.Pagination-select-page {
+  display: flex;
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.Pagination-select-page p {
+  margin-right: 10px;
+}
+
+.Pagination-pages {
+  display: flex;
+}
+
+.Pagination button {
+  font-size: 16px;
+}
+
+.Pagination-previous-button,
+.Pagination-next-button,
+.Pagination-btn-page,
+.Pagination-btn-page,
+.Pagination-btn-active-page {
+  border: none;
+  margin: 2px;
+  border-radius: 20px;
+}
+
+.Pagination-previous-button:hover,
+.Pagination-next-button:hover,
+.Pagination-btn-page:hover,
+.Pagination-btn-page:hover,
+.Pagination-btn-active-page:hover {
+  cursor: pointer;
+}
+
+.Pagination-previous-button,
+.Pagination-next-button,
+.Pagination-btn-page {
+  background-color: #fff;
+}
+
+.Pagination-previous-button,
+.Pagination-next-button {
+  background-color: darkgrey;
+  color: white;
+}
+
+.Pagination-btn-active-page {
+  background-color: #2baeb7;
+  color: white;
+}

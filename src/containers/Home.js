@@ -19,7 +19,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_URL_API}/offers?limit=${pagination[0]}&page=${pagination[1]}`
+          `https://benalgo-vinted-server.herokuapp.com/offers?limit=${pagination[0]}&page=${pagination[1]}`
         );
         setData(response.data);
         setIsLoading(false);

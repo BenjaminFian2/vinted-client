@@ -16,7 +16,7 @@ const Offer = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_URL_API}/offer/${id}`
+          `https://benalgo-vinted-server.herokuapp.com/offer/${id}`
         );
         setData(response.data);
         setIsLoading(false);

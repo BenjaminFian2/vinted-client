@@ -3,7 +3,6 @@ import "./Pagination.css";
 const Pagination = ({
   selectEntries,
   numPages,
-  count,
   numItems,
   setNumItems,
   page,

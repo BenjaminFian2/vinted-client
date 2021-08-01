@@ -107,6 +107,7 @@ function App() {
         <Header
           token={token}
           setUser={setUser}
+          setNumItems={setNumItems}
           queries={queries}
           setQueries={setQueries}
           setPage={setPage}

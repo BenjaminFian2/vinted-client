@@ -14,6 +14,7 @@ const Range = createSliderWithTooltip(Slider.Range);
 const Header = ({
   token,
   setUser,
+  setNumItems,
   queries,
   setQueries,
   setPage,
@@ -38,6 +39,7 @@ const Header = ({
             tab[0] = event.target.value;
             setQueries(tab);
             setPage(1);
+            setNumItems(5);
           }}
         />
         <FontAwesomeIcon
@@ -89,6 +91,7 @@ const Header = ({
                 onChange={(values) => {
                   setPrices(values);
                   setPage(1);
+                  setNumItems(5);
                 }}
               />
             </div>

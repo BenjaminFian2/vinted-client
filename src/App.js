@@ -8,6 +8,7 @@ import Header from "./components/Header";
 // import Login from "./containers/Login";
 import ModalRegister from "./components/ModalRegister";
 import ModalLogin from "./components/ModalLogin";
+import Footer from "./components/Footer";
 
 //import from react-router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -142,6 +143,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer />
       {modalRegister && (
         <ModalRegister
           setModalRegister={setModalRegister}

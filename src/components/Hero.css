@@ -48,3 +48,88 @@
 .Hero-ready-button {
   cursor: pointer;
 }
+
+@media (max-width: 1800px) AND (min-width: 1024px) {
+  .Hero {
+    height: 350px;
+    min-width: 1024px;
+  }
+
+  .Hero-tear {
+    height: 50px;
+  }
+
+  .Hero-ready {
+    height: 180px;
+    width: 300px;
+    padding: 15px;
+    font-size: 25px;
+    top: 45px;
+    left: 200px;
+  }
+
+  .Hero-ready-button {
+    height: 35px;
+    width: 160px;
+    font-size: 14px;
+    padding: 0 10px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 1023px) AND (min-width: 768px) {
+  .Hero {
+    height: 300px;
+    min-width: 768px;
+  }
+
+  .Hero-tear {
+    height: 35px;
+  }
+
+  .Hero-ready {
+    height: 180px;
+    width: 300px;
+    padding: 15px;
+    font-size: 25px;
+    top: 35px;
+    left: 150px;
+  }
+
+  .Hero-ready-button {
+    height: 35px;
+    width: 160px;
+    font-size: 14px;
+    padding: 0 10px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 767px) AND (min-width: 320px) {
+  .Hero {
+    height: 250px;
+    min-width: 320px;
+    margin-top: 20px;
+  }
+
+  .Hero-tear {
+    height: 30px;
+  }
+
+  .Hero-ready {
+    height: 150px;
+    width: 200px;
+    padding: 15px;
+    font-size: 20px;
+    top: 20px;
+    left: 50px;
+  }
+
+  .Hero-ready-button {
+    height: 30px;
+    width: 150px;
+    font-size: 12px;
+    padding: 0 5px;
+    margin-top: 25px;
+  }
+}

@@ -1,6 +1,28 @@
 .HomeCards {
-  width: 1280px;
+  min-width: 1280px;
   display: flex;
   flex-wrap: wrap;
   margin: 5px auto 30px auto;
+  justify-content: center;
+}
+
+@media (max-width: 1800px) AND (min-width: 1024px) {
+  .HomeCards {
+    min-width: 1024px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1023px) AND (min-width: 768px) {
+  .HomeCards {
+    min-width: 768px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) AND (min-width: 320px) {
+  .HomeCards {
+    min-width: 320px;
+    margin: 0 auto;
+  }
 }

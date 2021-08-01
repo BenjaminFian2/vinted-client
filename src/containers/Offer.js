@@ -27,8 +27,6 @@ const Offer = () => {
     fetchData();
   }, [id]);
 
-  console.log(data);
-
   return isLoading ? (
     <div className="roller-container">
       <div className="lds-roller">

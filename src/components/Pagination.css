@@ -58,3 +58,17 @@
   background-color: #2baeb7;
   color: white;
 }
+
+@media (max-width: 767px) AND (min-width: 320px) {
+  .Pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .Pagination-select-page > p,
+  .Pagination button {
+    font-size: 12px;
+  }
+}

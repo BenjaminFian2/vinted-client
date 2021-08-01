@@ -98,43 +98,45 @@ const Header = ({
           </div>
         </div>
       </div>
-      {token ? (
-        <button
-          className="Header-disconnected"
-          onClick={() => {
-            setUser(null);
-            if (window.location.pathname !== "/") {
-              history.push("/");
-            } else {
-              window.location.reload();
-            }
-          }}
-        >
-          Se Déconnecter
-        </button>
-      ) : (
-        <button
-          className="Header-register"
-          onClick={() => {
-            // history.push("/signup");
-            setModalRegister(true);
-          }}
-        >
-          S'inscrire
-        </button>
-      )}
-      {!token && (
-        <button
-          className="Header-login"
-          onClick={() => {
-            // history.push("/login");
-            setModalLogin(true);
-          }}
-        >
-          Se connecter
-        </button>
-      )}
-      <button className="Header-sell">Vends tes articles</button>
+      <div className="Header-container-buttons">
+        {token ? (
+          <button
+            className="Header-disconnected"
+            onClick={() => {
+              setUser(null);
+              if (window.location.pathname !== "/") {
+                history.push("/");
+              } else {
+                window.location.reload();
+              }
+            }}
+          >
+            Se Déconnecter
+          </button>
+        ) : (
+          <button
+            className="Header-register"
+            onClick={() => {
+              // history.push("/signup");
+              setModalRegister(true);
+            }}
+          >
+            S'inscrire
+          </button>
+        )}
+        {!token && (
+          <button
+            className="Header-login"
+            onClick={() => {
+              // history.push("/login");
+              setModalLogin(true);
+            }}
+          >
+            Se connecter
+          </button>
+        )}
+        <button className="Header-sell">Vends tes articles</button>
+      </div>
     </div>
   );
 };

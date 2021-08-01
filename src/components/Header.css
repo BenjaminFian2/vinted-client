@@ -133,7 +133,7 @@
   border-top-color: #2cb1ba !important;
 }
 
-.Header button {
+.Header-container-buttons > button {
   height: 30px;
   width: 115px;
   border-radius: 5px;
@@ -142,7 +142,11 @@
   outline: none;
 }
 
-.Header button:hover {
+.Header-container-buttons {
+  display: flex;
+}
+
+.Header-container-buttons > button:hover {
   cursor: pointer;
 }
 
@@ -153,8 +157,15 @@
   border: 1px solid #2cb1ba;
 }
 
+.Header-register:hover,
+.Header-login:hover {
+  background-color: #2cb1ba;
+  color: #fff;
+}
+
 .Header-login {
-  margin-left: -200px;
+  margin-right: 100px;
+  margin-left: 20px;
 }
 
 .Header-sell {
@@ -163,8 +174,161 @@
   border: none;
 }
 
+.Header-sell:hover {
+  background-color: white;
+  color: #2cb1ba;
+  border: 1px solid #2cb1ba;
+}
+
 .Header-disconnected {
   background-color: #c2175b;
   color: white;
   border: none;
+  margin-right: 20px;
+}
+
+.Header-disconnected:hover {
+  background-color: white;
+  color: #c2175b;
+  border: 1px solid #c2175b;
+}
+
+/*Responsive*/
+
+@media (max-width: 1800px) AND (min-width: 1024px) {
+  .Header-logo {
+    margin: 0 10px;
+  }
+
+  .Header-container-buttons {
+    margin-right: 10px;
+  }
+
+  .Header-container-buttons > button {
+    width: 100px;
+    line-height: 1;
+  }
+
+  .Header-login {
+    margin-right: 50px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 1023px) AND (min-width: 768px) {
+  .Header-logo {
+    height: 30px;
+    margin: 0 10px;
+  }
+
+  .Header-input {
+    width: 300px;
+    padding-left: 30px;
+    font-size: 14px;
+  }
+
+  .Header-box-sort-price {
+    font-size: 10px;
+  }
+
+  .Header-label-checkbox,
+  .Header-label-slider {
+    margin-right: 5px;
+  }
+
+  .Header-checkbox {
+    margin-right: 10px;
+  }
+
+  .Header-sliderArea {
+    width: 150px;
+  }
+
+  .rc-slider-tooltip-inner {
+    min-width: 20px !important;
+    height: 20px !important;
+    font-size: 10px !important;
+  }
+
+  .Header-container-buttons > button {
+    width: 80px;
+    line-height: 1;
+  }
+
+  .Header-login {
+    margin-right: 50px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 767px) AND (min-width: 320px) {
+  .Header {
+    height: 200px;
+    flex-direction: column;
+  }
+
+  .Header-logo {
+    height: 50px;
+    margin: 10px 0;
+  }
+
+  .Header-icon-search {
+    left: 17px;
+  }
+
+  .Header-box-input {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .Header-input {
+    width: 100%;
+    padding-left: 30px;
+    font-size: 14px;
+  }
+  .Header-box-input > div:first-child {
+    padding: 0 10px;
+  }
+
+  .Header-box-sort-price {
+    font-size: 8px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .Header-label-checkbox,
+  .Header-label-slider {
+    margin-right: 5px;
+  }
+
+  .Header-checkbox {
+    margin-right: 5px;
+  }
+
+  .Header-sliderArea {
+    width: 50%;
+  }
+
+  .rc-slider-tooltip-inner {
+    min-width: 20px !important;
+    height: 20px !important;
+    font-size: 10px !important;
+  }
+
+  .Header-container-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+
+  .Header-container-buttons > button {
+    min-width: 80px;
+    line-height: 1;
+  }
+
+  .Header-login {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }

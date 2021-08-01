@@ -54,3 +54,40 @@
   flex-direction: column;
   padding: 8px;
 }
+
+@media (max-width: 1800px) AND (min-width: 1024px) {
+  .Card {
+    width: 194px;
+  }
+
+  .Card-item-img {
+    height: 250px;
+    width: 194px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 1023px) AND (min-width: 768px) {
+  .Card {
+    width: 182px;
+  }
+
+  .Card-item-img {
+    height: 200px;
+    width: 182px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 767px) AND (min-width: 320px) {
+  .Card {
+    width: 150px;
+    margin: 0 5px 15px;
+  }
+
+  .Card-item-img {
+    width: 150px;
+    height: 100px;
+    object-fit: contain;
+  }
+}

@@ -1,20 +1,26 @@
 import "./Pagination.css";
 
-const Pagination = ({ SelectEntries, numPages, pagination, setPagination }) => {
+const Pagination = ({
+  selectEntries,
+  numPages,
+  count,
+  numItems,
+  setNumItems,
+  page,
+  setPage,
+}) => {
   return (
     <div className="Pagination">
       <div className="Pagination-select-page">
         <p>articles par page : </p>
         <select
-          value={pagination[0]}
+          value={numItems}
           onChange={(event) => {
-            const tab = [...pagination];
-            tab[0] = Number(event.target.value);
-            tab[1] = 1;
-            setPagination(tab);
+            setNumItems(event.target.value);
+            setPage(1);
           }}
         >
-          {SelectEntries().map((value, index) => {
+          {selectEntries().map((value, index) => {
             return (
               <option key={index} value={value}>
                 {value}
@@ -27,10 +33,8 @@ const Pagination = ({ SelectEntries, numPages, pagination, setPagination }) => {
         <button
           className="Pagination-previous-button"
           onClick={() => {
-            if (pagination[1] > 1) {
-              const tab = [...pagination];
-              tab[1]--;
-              setPagination(tab);
+            if (page > 1) {
+              setPage(page - 1);
             }
           }}
         >
@@ -42,12 +46,10 @@ const Pagination = ({ SelectEntries, numPages, pagination, setPagination }) => {
               key={index}
               value={index + 1}
               onClick={(event) => {
-                const tab = [...pagination];
-                tab[1] = Number(event.target.value);
-                setPagination(tab);
+                setPage(Number(event.target.value));
               }}
               className={
-                pagination[1] === Number(index + 1)
+                page === Number(index + 1)
                   ? "Pagination-btn-active-page"
                   : "Pagination-btn-page"
               }
@@ -59,10 +61,8 @@ const Pagination = ({ SelectEntries, numPages, pagination, setPagination }) => {
         <button
           className="Pagination-next-button"
           onClick={() => {
-            if (pagination[1] < numPages) {
-              const tab = [...pagination];
-              tab[1]++;
-              setPagination(tab);
+            if (page < numPages) {
+              setPage(page + 1);
             }
           }}
         >

@@ -68,3 +68,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 v1-> No responsive yet, connect to server , we can read offers (with pagination) and we can connect and disconnect a user.
+
+v2-> transform page login and signup to modal, add new filters (price-min, price-max, price-asc, price-desc) and the search-bar is functional.

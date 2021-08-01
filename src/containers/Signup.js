@@ -1,12 +1,18 @@
 import "./Signup.css";
-import { Link, useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const Signup = () => {
-  const [data, setData] = useState({ username: "", email: "", password: "" });
+const Signup = ({ setUser, setModalRegister, setModalLogin }) => {
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    phone: "",
+  });
+  const [errorMessage, setErrormessage] = useState("");
 
-  let history = useHistory();
+  // let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -15,10 +21,16 @@ const Signup = () => {
         `${process.env.REACT_APP_URL_API}/user/signup`,
         data
       );
-      console.log(response);
-      history.push("/");
+      if (response.data.token) {
+        setUser(response.data.token);
+      }
+      // history.push("/");
+      setModalRegister(false);
     } catch (error) {
-      console.log(error.message);
+      if (error.response.status === 409) {
+        setErrormessage("Un compte portant cet email existe déja !");
+      }
+      console.log(error.response.data.message);
     }
   };
 
@@ -46,6 +58,15 @@ const Signup = () => {
             }}
           />
           <input
+            placeholder="Téléphone"
+            type="text"
+            onChange={(event) => {
+              const obj = { ...data };
+              obj.phone = event.target.value;
+              setData(obj);
+            }}
+          />
+          <input
             placeholder="Mot de passe"
             type="password"
             onChange={(event) => {
@@ -54,6 +75,7 @@ const Signup = () => {
               setData(obj);
             }}
           />
+          <p>{errorMessage}</p>
           <div className="Signup-checkbox-container">
             <div>
               <input type="checkbox" />
@@ -67,9 +89,15 @@ const Signup = () => {
           </div>
           <input type="submit" />
         </form>
-        <Link to="/login" className="Signup-redirect">
+        <span
+          onClick={() => {
+            setModalLogin(true);
+            setModalRegister(false);
+          }}
+          className="Signup-redirect"
+        >
           Tu as déjà un compte ? Connecte-toi !
-        </Link>
+        </span>
       </div>
     </div>
   );

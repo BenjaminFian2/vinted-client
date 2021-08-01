@@ -16,7 +16,7 @@ const Offer = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://benalgo-vinted-server.herokuapp.com/offer/${id}`
+          `${process.env.REACT_APP_URL_API}/offer/${id}`
         );
         setData(response.data);
         setIsLoading(false);
@@ -30,7 +30,18 @@ const Offer = () => {
   console.log(data);
 
   return isLoading ? (
-    <span>En cours de chargement...</span>
+    <div className="roller-container">
+      <div className="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
   ) : (
     <div className="Offer">
       <div className="Offer-container">
@@ -46,7 +57,7 @@ const Offer = () => {
               {data.product_details.map((item, index) => {
                 const keys = Object.keys(item);
                 return (
-                  <li>
+                  <li key={index}>
                     <span>{keys[0]}</span>
                     <span className="Offer-infos-item">
                       {item[keys[0]].toUpperCase()}

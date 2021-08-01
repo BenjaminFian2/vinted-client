@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 .Signup-form > input {
@@ -16,7 +16,7 @@
   border-bottom: 1px solid #fcced3;
   height: 35px;
   margin-bottom: 20px;
-  width: 300px;
+  width: 310px;
   font-size: 16px;
 }
 
@@ -42,6 +42,12 @@
 .Signup-form input[type="checkbox"]:hover,
 .Signup-form input[type="submit"]:hover {
   cursor: pointer;
+}
+
+.Signup-form p,
+.Login-form p {
+  text-align: center;
+  color: red;
 }
 
 .Signup-checkbox-container div span {
@@ -72,4 +78,8 @@
   font-size: 13px;
   text-decoration: none;
   margin-top: 20px;
+}
+
+.Signup-redirect:hover {
+  cursor: pointer;
 }

@@ -1,59 +1,46 @@
 import "./Home.css";
 
-import axios from "axios";
-
-import { useEffect, useState } from "react";
-
 //components
 import Hero from "../components/Hero";
 import HomeCards from "../components/HomeCards";
 import Pagination from "../components/Pagination";
 
-const Home = () => {
-  //useStates
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  const [pagination, setPagination] = useState([5, 1]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://benalgo-vinted-server.herokuapp.com/offers?limit=${pagination[0]}&page=${pagination[1]}`
-        );
-        setData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchData();
-  }, [pagination, setPagination]);
-
-  const SelectEntries = () => {
-    const tab = [];
-    for (let i = 5; i <= data.count; i++) {
-      tab.push(i);
-    }
-    return tab;
-  };
-
-  let numPages;
-
-  if (!isLoading) {
-    numPages = Math.ceil(data.count / pagination[0]);
-  }
-
+const Home = ({
+  data,
+  isLoading,
+  count,
+  setCount,
+  numItems,
+  setNumItems,
+  page,
+  setPage,
+  selectEntries,
+  numPages,
+}) => {
   return isLoading ? (
-    <span>En cours de chargement...</span>
+    <div className="roller-container">
+      <div className="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
   ) : (
     <div className="Home">
       <Hero />
       <Pagination
-        SelectEntries={SelectEntries}
+        selectEntries={selectEntries}
         numPages={numPages}
-        pagination={pagination}
-        setPagination={setPagination}
+        count={count}
+        numItems={numItems}
+        setNumItems={setNumItems}
+        page={page}
+        setPage={setPage}
       />
       <HomeCards data={data} />
     </div>

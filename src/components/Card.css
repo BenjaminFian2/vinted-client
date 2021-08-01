@@ -24,7 +24,11 @@
 .Card-size,
 .Card-brand {
   color: #999;
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.Card-price {
+  margin-bottom: 5px;
 }
 
 .Card-img-user {

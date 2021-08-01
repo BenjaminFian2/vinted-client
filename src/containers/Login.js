@@ -1,12 +1,13 @@
 import "./Login.css";
-import { Link, useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, setModalLogin, setModalRegister }) => {
   const [data, setData] = useState({ email: "", password: "" });
+  const [errorMessage, setErrormessage] = useState("");
 
-  let history = useHistory();
+  // let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,8 +19,12 @@ const Login = ({ setUser }) => {
       console.log(response);
       const token = response.data.token;
       setUser(token);
-      history.push("/");
+      // history.push("/");
+      setModalLogin(false);
     } catch (error) {
+      if (error.response.status === 401) {
+        setErrormessage("L'email et/ou le mot de passe sont incorrect");
+      }
       console.log(error.message);
     }
   };
@@ -47,11 +52,18 @@ const Login = ({ setUser }) => {
               setData(obj);
             }}
           />
+          <p>{errorMessage}</p>
           <input type="submit" />
         </form>
-        <Link to="/signup" className="Login-redirect">
+        <span
+          onClick={() => {
+            setModalRegister(true);
+            setModalLogin(false);
+          }}
+          className="Login-redirect"
+        >
           Pas encore de compte ? Inscris-toi !
-        </Link>
+        </span>
       </div>
     </div>
   );

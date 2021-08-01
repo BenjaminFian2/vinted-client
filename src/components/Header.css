@@ -1,5 +1,5 @@
 .Header {
-  height: 80px;
+  height: 120px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -9,14 +9,10 @@
   height: 45px;
 }
 
-.box-Header-input {
+.Header-box-input {
   position: relative;
   display: flex;
-}
-
-.Header-input {
-  border: none;
-  outline: none;
+  flex-direction: column;
 }
 
 .Header-input {
@@ -26,12 +22,115 @@
   border-radius: 5px;
   height: 37px;
   font-size: 16px;
+  border: none;
+  outline: none;
 }
 
 .Header-icon-search {
   position: absolute;
   left: 7px;
   top: 11px;
+}
+
+.Header-box-sort-price {
+  margin-top: 35px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.Header-label-checkbox,
+.Header-label-slider {
+  margin-right: 10px;
+}
+
+.Header-checkbox {
+  margin-right: 25px;
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 20px;
+}
+
+.Header-checkbox-input {
+  display: none;
+}
+
+.Header-checkbox-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background-color: #2cb1ba;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.Header-checkbox-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.Header-checkbox-input:checked + .Header-checkbox-slider:before {
+  -webkit-transform: translateX(25px);
+  -ms-transform: translateX(25px);
+  transform: translateX(25px);
+}
+
+.on {
+  display: none;
+}
+
+.on,
+.off {
+  position: absolute;
+  color: white;
+  transform: translate(-50%, -50%);
+  top: 55%;
+  left: 50%;
+  font-size: 16px;
+}
+
+.Header-checkbox-slider.round {
+  border-radius: 34px;
+}
+
+.Header-checkbox-slider.round:before {
+  background-color: lightgrey;
+  border-radius: 50%;
+}
+
+.Header-checkbox-input:checked + .Header-checkbox-slider .on {
+  display: block;
+}
+
+.Header-checkbox-input:checked + .Header-checkbox-slider .off {
+  display: none;
+}
+
+.Header-sliderArea {
+  width: 300px;
+}
+
+.rc-slider-tooltip-inner {
+  background-color: #2cb1ba !important;
+  color: white !important;
+  min-width: 35px !important;
+}
+
+.rc-slider-tooltip-placement-top .rc-slider-tooltip-arrow {
+  border-top-color: #2cb1ba !important;
 }
 
 .Header button {

@@ -20,12 +20,13 @@
 
 body {
   min-width: 320px;
-}
-
-.App {
   font-family: "helvetica";
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+}
 h2 {
   font-size: 25px;
   margin: 20px 0;

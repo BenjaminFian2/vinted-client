@@ -72,3 +72,5 @@ v1-> No responsive yet, connect to server , we can read offers (with pagination)
 v2-> transform page login and signup to modal, add new filters (price-min, price-max, price-asc, price-desc) and the search-bar is functional.
 
 v3-> responsive for width 1800px, 1024px, 768px, 320px
+
+v4-> add a publish offer page who can be access only when connected.

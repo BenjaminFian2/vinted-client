@@ -15,7 +15,7 @@
   padding-top: 40px;
 }
 
-form {
+.Publish form {
   width: 1280px;
 }
 
@@ -212,7 +212,7 @@ input:focus {
     width: 1004px;
   }
 
-  form {
+  .Publish form {
     width: 1004px;
   }
 }
@@ -222,7 +222,7 @@ input:focus {
     width: 748px;
   }
 
-  form {
+  .Publish form {
     width: 748px;
   }
 }
@@ -236,7 +236,7 @@ input:focus {
     width: 300px;
   }
 
-  form {
+  .Publish form {
     width: 300px;
   }
 

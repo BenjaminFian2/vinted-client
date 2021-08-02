@@ -1,9 +1,14 @@
 import "./Signup.css";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const Signup = ({ setUser, setModalRegister, setModalLogin }) => {
+const Signup = ({
+  setUser,
+  setModalRegister,
+  setModalLogin,
+  redirectPublish,
+}) => {
   const [data, setData] = useState({
     username: "",
     email: "",
@@ -12,7 +17,7 @@ const Signup = ({ setUser, setModalRegister, setModalLogin }) => {
   });
   const [errorMessage, setErrormessage] = useState("");
 
-  // let history = useHistory();
+  let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +29,9 @@ const Signup = ({ setUser, setModalRegister, setModalLogin }) => {
       if (response.data.token) {
         setUser(response.data.token);
       }
-      // history.push("/");
+      if (redirectPublish) {
+        history.push("/publish");
+      }
       setModalRegister(false);
     } catch (error) {
       if (error.response.status === 409) {

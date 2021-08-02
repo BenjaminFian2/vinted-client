@@ -1,13 +1,18 @@
 import "./Login.css";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const Login = ({ setUser, setModalLogin, setModalRegister }) => {
+const Login = ({
+  setUser,
+  setModalLogin,
+  setModalRegister,
+  redirectPublish,
+}) => {
   const [data, setData] = useState({ email: "", password: "" });
   const [errorMessage, setErrormessage] = useState("");
 
-  // let history = useHistory();
+  let history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -16,10 +21,11 @@ const Login = ({ setUser, setModalLogin, setModalRegister }) => {
         `${process.env.REACT_APP_URL_API}/user/login`,
         data
       );
-      console.log(response);
       const token = response.data.token;
       setUser(token);
-      // history.push("/");
+      if (redirectPublish) {
+        history.push("/publish");
+      }
       setModalLogin(false);
     } catch (error) {
       if (error.response.status === 401) {

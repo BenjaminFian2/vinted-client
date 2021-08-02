@@ -22,6 +22,8 @@ const Header = ({
   setPrices,
   setModalLogin,
   setModalRegister,
+  tokenId,
+  setRedirectPublish,
 }) => {
   let history = useHistory();
   return (
@@ -109,6 +111,7 @@ const Header = ({
               } else {
                 window.location.reload();
               }
+              setRedirectPublish(false);
             }}
           >
             Se Déconnecter
@@ -135,7 +138,19 @@ const Header = ({
             Se connecter
           </button>
         )}
-        <button className="Header-sell">Vends tes articles</button>
+        <button
+          className="Header-sell"
+          onClick={() => {
+            if (tokenId) {
+              history.push("/publish");
+            } else {
+              setModalLogin(true);
+              setRedirectPublish(true);
+            }
+          }}
+        >
+          Vends tes articles
+        </button>
       </div>
     </div>
   );

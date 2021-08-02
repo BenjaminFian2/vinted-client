@@ -7,12 +7,16 @@ const Card = ({ offer }) => {
     <Link to={`/offer/${offer._id}`} className="Link">
       <div className="Card">
         <div className="Card-user">
-          {offer.owner.account.avatar && (
+          {offer.owner.account.avatar ? (
             <img
               className="Card-img-user"
               alt="avatar"
               src={offer.owner.account.avatar.secure_url}
             ></img>
+          ) : (
+            <div className="Card-img-user anon">
+              <span>{offer.owner.account.username[0]}</span>
+            </div>
           )}
 
           <span className="Card-username">{offer.owner.account.username}</span>

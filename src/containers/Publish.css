@@ -1,0 +1,250 @@
+.Publish {
+  display: flex;
+  justify-content: center;
+  background-color: #ebedee;
+}
+
+.Publish-container {
+  width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Publish-container > h2 {
+  padding-top: 40px;
+}
+
+form {
+  width: 1280px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.Publish-file-box {
+  background-color: #fff;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 0 2px grey;
+}
+
+.Publish-file-without {
+  border: 1px dashed #ebedee;
+  border-radius: 3px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Publish-file-withImage {
+  border: 1px dashed #ebedee;
+  border-radius: 3px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.Publish-file-withImage img {
+  height: 90%;
+  margin: 0 10px;
+}
+
+.Publish-remove-img-button {
+  position: relative;
+  color: #000;
+  background-color: #fff;
+  right: 60px;
+  bottom: 70px;
+  height: 25px;
+  line-height: 25px;
+  width: 30px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.Publish-remove-img-button:hover {
+  cursor: pointer;
+}
+
+.Publish-file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0ab1ba;
+  border-radius: 4px;
+  height: 50px;
+}
+
+.Publish-file-label {
+  color: #0ab1ba;
+  font-weight: bold;
+}
+
+.Publish-file-label:hover {
+  cursor: pointer;
+}
+
+.Publish-file-label > span {
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.Publish-file-label-sign {
+  font-size: 40px;
+}
+
+.Publish-file-input {
+  display: none;
+  /* outline: none;
+  appearance: none; */
+}
+
+.Publish-container-input-text {
+  background-color: #fff;
+  margin: 20px 0;
+  box-shadow: 0 0 2px grey;
+}
+
+.Publish-input-text {
+  /* height: 74px; */
+  border-bottom: 1px solid #ebedee;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.Publish-input-text > input {
+  width: 50%;
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  color: #000;
+  font-family: "Maison Neue";
+  font-size: 16px;
+}
+
+.Publish-input-text > textarea {
+  width: 50%;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  outline: none;
+  color: #000;
+  font-family: "Maison Neue";
+  font-size: 16px;
+}
+
+.Publish-input-text > input:focus-within,
+.Publish-input-text > textarea:focus-within,
+.Publish-input-checkbox > input:focus-within {
+  border-bottom: 1px solid #2cb1ba;
+}
+
+.Publish-input-checkbox {
+  width: 50%;
+}
+
+.Publish-input-checkbox > input {
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  color: #000;
+  font-family: "Maison Neue";
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.unChecked {
+  border-radius: 3px;
+  padding: 2px 11px;
+  margin: 0 15px 0 0;
+  border: 1px solid #000;
+}
+
+.checked {
+  border-radius: 3px;
+  padding: 3px 6px;
+  margin: 0 15px 0 0;
+  background-color: #0ab1ba;
+}
+
+.checked > img {
+  overflow: visible;
+  width: 1em;
+  height: 1em;
+  font-size: 0.75em;
+}
+
+.Publish-checkbox > input {
+  display: none;
+}
+
+.unChecked:hover,
+.checked:hover {
+  cursor: pointer;
+}
+
+.Publish-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Publish-form input[type="submit"] {
+  background-color: #2cb1ba;
+  height: 45px;
+  width: 100px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  margin: 40px 0;
+}
+
+.Publish-form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 1300px) AND (min-width: 1024px) {
+  .Publish-container {
+    width: 1004px;
+  }
+
+  form {
+    width: 1004px;
+  }
+}
+
+@media (max-width: 1023px) AND (min-width: 768px) {
+  .Publish-container {
+    width: 748px;
+  }
+
+  form {
+    width: 748px;
+  }
+}
+
+@media (max-width: 767px) AND (min-width: 320px) {
+  .Publish {
+    margin-top: 20px;
+  }
+
+  .Publish-container {
+    width: 300px;
+  }
+
+  form {
+    width: 300px;
+  }
+
+  .Publish-input-checkbox > input {
+    width: 120px;
+  }
+
+  .Publish-checkbox > span {
+    font-size: 10px;
+  }
+}

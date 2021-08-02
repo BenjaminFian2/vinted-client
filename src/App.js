@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
+import Publish from "./containers/Publish";
 
 import { useState, useEffect } from "react";
 
@@ -29,12 +30,13 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState(Coockies.get("token") || null);
   const [queries, setQueries] = useState(["", "price-asc"]);
+  const [count, setCount] = useState();
   const [prices, setPrices] = useState([10, 100]);
   const [numItems, setNumItems] = useState(5);
   const [page, setPage] = useState(1);
-  const [count, setCount] = useState();
   const [modalLogin, setModalLogin] = useState(false);
   const [modalRegister, setModalRegister] = useState(false);
+  const [redirectPublish, setRedirectPublish] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -116,6 +118,8 @@ function App() {
           setPrices={setPrices}
           setModalLogin={setModalLogin}
           setModalRegister={setModalRegister}
+          tokenId={token}
+          setRedirectPublish={setRedirectPublish}
         />
         <Switch>
           <Route path="/offer/:id">
@@ -127,6 +131,9 @@ function App() {
         <Route path="/login">
           <Login setUser={setUser} />
         </Route> */}
+          <Route path="/publish">
+            <Publish tokenId={token} />
+          </Route>
           <Route path="/">
             <Home
               data={data}
@@ -139,25 +146,30 @@ function App() {
               setPage={setPage}
               selectEntries={selectEntries}
               numPages={numPages}
+              tokenId={token}
+              setModalLogin={setModalLogin}
+              setRedirectPublish={setRedirectPublish}
             />
           </Route>
         </Switch>
+        {modalRegister && (
+          <ModalRegister
+            setModalRegister={setModalRegister}
+            setModalLogin={setModalLogin}
+            setUser={setUser}
+            redirectPublish={redirectPublish}
+          />
+        )}
+        {modalLogin && (
+          <ModalLogin
+            setModalLogin={setModalLogin}
+            setModalRegister={setModalRegister}
+            setUser={setUser}
+            redirectPublish={redirectPublish}
+          />
+        )}
       </Router>
       <Footer />
-      {modalRegister && (
-        <ModalRegister
-          setModalRegister={setModalRegister}
-          setModalLogin={setModalLogin}
-          setUser={setUser}
-        />
-      )}
-      {modalLogin && (
-        <ModalLogin
-          setModalLogin={setModalLogin}
-          setModalRegister={setModalRegister}
-          setUser={setUser}
-        />
-      )}
     </div>
   );
 }

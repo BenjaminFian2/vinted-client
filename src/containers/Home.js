@@ -9,13 +9,15 @@ const Home = ({
   data,
   isLoading,
   count,
-  setCount,
   numItems,
   setNumItems,
   page,
   setPage,
   selectEntries,
   numPages,
+  tokenId,
+  setModalLogin,
+  setRedirectPublish,
 }) => {
   return isLoading ? (
     <div className="roller-container">
@@ -32,7 +34,11 @@ const Home = ({
     </div>
   ) : (
     <div className="Home">
-      <Hero />
+      <Hero
+        tokenId={tokenId}
+        setModalLogin={setModalLogin}
+        setRedirectPublish={setRedirectPublish}
+      />
       <Pagination
         selectEntries={selectEntries}
         numPages={numPages}

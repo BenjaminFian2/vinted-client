@@ -2,7 +2,12 @@ import "./Modal.css";
 
 import Login from "../containers/Login";
 
-const ModalLogin = ({ setModalLogin, setModalRegister, setUser }) => {
+const ModalLogin = ({
+  setModalLogin,
+  setModalRegister,
+  setUser,
+  redirectPublish,
+}) => {
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -20,6 +25,7 @@ const ModalLogin = ({ setModalLogin, setModalRegister, setUser }) => {
           setModalLogin={setModalLogin}
           setModalRegister={setModalRegister}
           setUser={setUser}
+          redirectPublish={redirectPublish}
         />
       </div>
     </div>

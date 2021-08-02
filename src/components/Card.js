@@ -15,7 +15,7 @@ const Card = ({ offer }) => {
             ></img>
           ) : (
             <div className="Card-img-user anon">
-              <span>{offer.owner.account.username[0]}</span>
+              <span>{offer.owner.account.username[0].toUpperCase()}</span>
             </div>
           )}
 

@@ -74,12 +74,16 @@ const Offer = () => {
             <p className="Offer-name">{data.product_name}</p>
             <p className="Offer-description">{data.product_description}</p>
             <div className="Offer-username">
-              {data.owner.account.avatar && (
+              {data.owner.account.avatar ? (
                 <img
                   className="Card-img-user"
                   alt="avatar"
                   src={data.owner.account.avatar.secure_url}
                 ></img>
+              ) : (
+                <div className="Card-img-user anon">
+                  <span>{data.owner.account.username[0].toUpperCase()}</span>
+                </div>
               )}
               <span>{data.owner.account.username}</span>
             </div>

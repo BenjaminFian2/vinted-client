@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 
 import { useState, useEffect } from "react";
 
@@ -29,6 +30,7 @@ function App() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState(Coockies.get("token") || null);
+  const [userId, setUserId] = useState(Coockies.get("userId") || null);
   const [queries, setQueries] = useState(["", "price-asc"]);
   const [count, setCount] = useState();
   const [prices, setPrices] = useState([10, 100]);
@@ -37,12 +39,13 @@ function App() {
   const [modalLogin, setModalLogin] = useState(false);
   const [modalRegister, setModalRegister] = useState(false);
   const [redirectPublish, setRedirectPublish] = useState(false);
+  const [editMode, setEditMode] = useState({ active: false, offer: {} });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_URL_API}/offers?limit=${numItems}&page=${page}&title=${queries[0]}&sort=${queries[1]}&priceMin=${prices[0]}&priceMax=${prices[1]}`
+          `https://benalgo-vinted-server.herokuapp.com/offers?limit=${numItems}&page=${page}&title=${queries[0]}&sort=${queries[1]}&priceMin=${prices[0]}&priceMax=${prices[1]}`
         );
         setData(response.data);
         setCount(response.data.count);
@@ -70,6 +73,16 @@ function App() {
     } else {
       Coockies.remove("token");
       setToken(null);
+    }
+  };
+
+  const setUser_Id = (id) => {
+    if (id) {
+      Coockies.set("userId", id, { expires: 1 });
+      setUserId(id);
+    } else {
+      Coockies.remove("userId");
+      setUserId(null);
     }
   };
 
@@ -108,8 +121,8 @@ function App() {
     <div className="App">
       <Router>
         <Header
-          token={token}
           setUser={setUser}
+          setUser_Id={setUser_Id}
           setNumItems={setNumItems}
           queries={queries}
           setQueries={setQueries}
@@ -123,7 +136,12 @@ function App() {
         />
         <Switch>
           <Route path="/offer/:id">
-            <Offer />
+            <Offer
+              tokenId={token}
+              userId={userId}
+              setModalLogin={setModalLogin}
+              setEditMode={setEditMode}
+            />
           </Route>
           {/* <Route path="/signup">
           <Signup setUser={setUser} />
@@ -132,7 +150,14 @@ function App() {
           <Login setUser={setUser} />
         </Route> */}
           <Route path="/publish">
-            <Publish tokenId={token} />
+            <Publish
+              tokenId={token}
+              editMode={editMode}
+              setEditMode={setEditMode}
+            />
+          </Route>
+          <Route path="/payment">
+            <Payment userId={userId} tokenId={token} />
           </Route>
           <Route path="/">
             <Home
@@ -157,6 +182,7 @@ function App() {
             setModalRegister={setModalRegister}
             setModalLogin={setModalLogin}
             setUser={setUser}
+            setUser_Id={setUser_Id}
             redirectPublish={redirectPublish}
           />
         )}
@@ -165,6 +191,7 @@ function App() {
             setModalLogin={setModalLogin}
             setModalRegister={setModalRegister}
             setUser={setUser}
+            setUser_Id={setUser_Id}
             redirectPublish={redirectPublish}
           />
         )}

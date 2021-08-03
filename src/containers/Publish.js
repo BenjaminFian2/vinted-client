@@ -1,11 +1,11 @@
 import "./Publish.css";
 import { Redirect, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import checkedInput from "../assets/img/checked.svg";
 
-const Publish = ({ tokenId }) => {
+const Publish = ({ tokenId, editMode, setEditMode }) => {
   const [data, setData] = useState({
     title: "",
     description: "",
@@ -17,6 +17,23 @@ const Publish = ({ tokenId }) => {
     color: "",
     picture: null,
   });
+
+  useEffect(() => {
+    if (editMode.active) {
+      setData({
+        title: editMode.offer.product_name,
+        description: editMode.offer.product_description,
+        price: editMode.offer.product_price,
+        condition: editMode.offer.product_details[2].ÉTAT,
+        city: editMode.offer.product_details[4].EMPLACEMENT,
+        brand: editMode.offer.product_details[0].MARQUE,
+        size: editMode.offer.product_details[1].TAILLE,
+        color: editMode.offer.product_details[3].COULEUR,
+        picture: null,
+      });
+    }
+  }, []);
+
   const [errorMessage, setErrormessage] = useState("");
   const [checked, setChecked] = useState(false);
 
@@ -24,46 +41,82 @@ const Publish = ({ tokenId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("title", data.title);
-      formData.append("description", data.description);
-      formData.append("price", data.price);
-      formData.append("condition", data.condition);
-      formData.append("city", data.city);
-      formData.append("brand", data.brand);
-      formData.append("size", data.size);
-      formData.append("color", data.color);
-      formData.append("picture", data.picture);
-
-      const response = await axios.post(
-        `${process.env.REACT_APP_URL_API}/offer/publish`,
-        formData,
-        { headers: { authorization: `Bearer ${tokenId}` } }
-      );
-
-      history.push(`/offer/${response.data._id}`);
-    } catch (error) {
-      if (error.response.status === 400) {
-        setErrormessage("Veuillez renseigner tous les champs");
+    if (editMode.active) {
+      try {
+        const response = await axios.put(
+          `https://benalgo-vinted-server.herokuapp.com/offer/update/${editMode.offer._id}`,
+          { headers: { authorization: `Bearer ${tokenId}` } }
+        );
+        setEditMode({ active: false, offer: {} });
+        history.push(`/offer/${editMode.offer._id}`);
+      } catch (error) {
+        console.log(error.mesage);
       }
-      if (error.response.status === 401) {
-        setErrormessage("Vous n'êtes pas autorisé à publier une annonce.");
+    } else {
+      try {
+        const formData = new FormData();
+        formData.append("title", data.title);
+        formData.append("description", data.description);
+        formData.append("price", data.price);
+        formData.append("condition", data.condition);
+        formData.append("city", data.city);
+        formData.append("brand", data.brand);
+        formData.append("size", data.size);
+        formData.append("color", data.color);
+        formData.append("picture", data.picture);
+
+        const response = await axios.post(
+          `https://benalgo-vinted-server.herokuapp.com/offer/publish`,
+          formData,
+          { headers: { authorization: `Bearer ${tokenId}` } }
+        );
+
+        history.push(`/offer/${response.data._id}`);
+      } catch (error) {
+        if (error.response.status === 400) {
+          setErrormessage("Veuillez renseigner tous les champs");
+        }
+        if (error.response.status === 401) {
+          setErrormessage("Vous n'êtes pas autorisé à publier une annonce.");
+        }
+        console.log(error.message);
       }
-      console.log(error.message);
     }
   };
+
+  console.log(data);
 
   return tokenId ? (
     <div className="Publish">
       <div className="Publish-container">
-        <h2>Vends ton article</h2>
+        {editMode.active ? (
+          <h2>Modifie ton annonce</h2>
+        ) : (
+          <h2>Vends ton article</h2>
+        )}
         <form
           className="Publish-form"
           onSubmit={(event) => handleSubmit(event)}
         >
           <div className="Publish-file-box">
-            {data.picture ? (
+            {editMode.offer.product_image ? (
+              <div className="Publish-file-withImage">
+                <img
+                  src={editMode.offer.product_image.secure_url}
+                  alt="prévisualisation"
+                />
+                <div
+                  className="Publish-remove-img-button"
+                  onClick={() => {
+                    const obj = { ...editMode };
+                    obj.offer.product_image = null;
+                    setEditMode(obj);
+                  }}
+                >
+                  X
+                </div>
+              </div>
+            ) : data.picture ? (
               <div className="Publish-file-withImage">
                 <img
                   src={URL.createObjectURL(data.picture)}
@@ -93,7 +146,6 @@ const Publish = ({ tokenId }) => {
                     className="Publish-file-input"
                     onChange={(event) => {
                       const obj = { ...data };
-                      //   obj.picture = URL.createObjectURL(event.target.files[0]);
                       obj.picture = event.target.files[0];
                       setData(obj);
                     }}
@@ -106,6 +158,7 @@ const Publish = ({ tokenId }) => {
             <div className="Publish-input-text">
               <h4>Titre</h4>
               <input
+                defaultValue={data.title}
                 type="text"
                 placeholder="ex: Chemise Sézane verte"
                 onChange={(event) => {
@@ -118,6 +171,7 @@ const Publish = ({ tokenId }) => {
             <div className="Publish-input-text">
               <h4>Décris ton article</h4>
               <textarea
+                defaultValue={data.description}
                 name="description"
                 id="description"
                 rows="5"
@@ -134,6 +188,7 @@ const Publish = ({ tokenId }) => {
             <div className="Publish-input-text">
               <h4>Marque</h4>
               <input
+                defaultValue={data.brand}
                 type="text"
                 placeholder="ex: Zara"
                 onChange={(event) => {
@@ -146,6 +201,7 @@ const Publish = ({ tokenId }) => {
             <div className="Publish-input-text">
               <h4>Taille</h4>
               <input
+                defaultValue={data.size}
                 type="text"
                 placeholder="ex: L / 40 / 12"
                 onChange={(event) => {
@@ -158,6 +214,7 @@ const Publish = ({ tokenId }) => {
             <div className="Publish-input-text">
               <h4>Couleur</h4>
               <input
+                defaultValue={data.color}
                 type="text"
                 placeholder="ex: Fushia"
                 onChange={(event) => {
@@ -170,6 +227,7 @@ const Publish = ({ tokenId }) => {
             <div className="Publish-input-text">
               <h4>État</h4>
               <input
+                defaultValue={data.condition}
                 type="text"
                 placeholder="ex: Neuf avec étiquette"
                 onChange={(event) => {
@@ -182,6 +240,7 @@ const Publish = ({ tokenId }) => {
             <div className="Publish-input-text">
               <h4>Lieu</h4>
               <input
+                defaultValue={data.city}
                 type="text"
                 placeholder="ex: Paris"
                 onChange={(event) => {
@@ -197,6 +256,7 @@ const Publish = ({ tokenId }) => {
               <h4>Prix</h4>
               <div className="Publish-input-checkbox">
                 <input
+                  defaultValue={data.price}
                   type="text"
                   placeholder="0,00 €"
                   onChange={(event) => {
@@ -233,7 +293,11 @@ const Publish = ({ tokenId }) => {
           </div>
           <p>{errorMessage}</p>
           <div className="Publish-submit">
-            <input type="submit" />
+            {editMode.active ? (
+              <input type="submit" value="Modifier" />
+            ) : (
+              <input type="submit" />
+            )}
           </div>
         </form>
       </div>

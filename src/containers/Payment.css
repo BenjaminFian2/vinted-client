@@ -1,0 +1,108 @@
+.Payment {
+  background: #ebedee;
+  height: calc(100vh - 60px);
+}
+
+.Payment-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 36px 20px;
+}
+
+.Payment-card {
+  background: #fff;
+}
+
+.Payment-card-title {
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  color: #999;
+  padding: 24px 24px 8px;
+}
+
+.Payment-card-content {
+  padding: 24px;
+  text-align: justify;
+}
+
+.Payment-card ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.Payment-card li {
+  font-size: 16px;
+  line-height: 22px;
+  color: #666;
+  padding: 4px 0;
+  display: grid;
+  grid: auto/1fr auto;
+  align-items: center;
+}
+
+.Payment-divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(17, 17, 17, 0.1);
+  margin: 24px 0;
+}
+
+.Payment-bold {
+  color: #111;
+  font-weight: bold;
+}
+
+.Payment-container-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Payment-card input,
+.StripeElement {
+  display: block;
+  margin: 10px 0 20px;
+  padding: 10px 14px;
+  font-size: 1em;
+  font-family: "Source Code Pro", monospace;
+  box-shadow: 0 1px 3px rgb(50 50 93 / 15%), 0 1px 0 rgb(0 0 0 / 2%);
+  border: 0;
+  outline: 0;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.Payment-card button {
+  margin-top: 8px;
+  display: block;
+  width: 25%;
+  font-size: 16px;
+  line-height: 22px;
+  height: 44px;
+  padding: 0 14px;
+  color: #fff;
+  border: 1px solid;
+  border-radius: 4px;
+  background: #00c06d;
+  border-color: #00c06d;
+}
+
+@media (max-width: 767px) AND (min-width: 320px) {
+  .Payment {
+    margin-top: 20px;
+    height: 100vh;
+  }
+
+  .Payment-card li,
+  .Payment-card-content {
+    font-size: 14px;
+  }
+
+  .Payment-card button {
+    font-size: 14px;
+    height: 30px;
+    padding: 0 5px;
+  }
+}

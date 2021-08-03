@@ -31,7 +31,9 @@ const Card = ({ offer }) => {
           </div>
 
           <div className="Card-item-details">
-            <span className="Card-price">{offer.product_price} €</span>
+            <span className="Card-price">
+              {offer.product_price.toFixed(2)} €
+            </span>
             <span className="Card-size">
               {offer.product_details[1].TAILLE &&
                 offer.product_details[1].TAILLE.toUpperCase()}

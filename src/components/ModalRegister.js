@@ -6,6 +6,7 @@ const ModalRegister = ({
   setModalRegister,
   setModalLogin,
   setUser,
+  setUser_Id,
   redirectPublish,
 }) => {
   return (
@@ -25,6 +26,7 @@ const ModalRegister = ({
           setModalRegister={setModalRegister}
           setModalLogin={setModalLogin}
           setUser={setUser}
+          setUser_Id={setUser_Id}
           redirectPublish={redirectPublish}
         />
       </div>

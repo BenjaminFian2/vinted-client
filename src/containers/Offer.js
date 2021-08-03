@@ -1,12 +1,12 @@
 import "./Offer.css";
 
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import axios from "axios";
 
 import { useEffect, useState } from "react";
 
-const Offer = () => {
+const Offer = ({ tokenId, userId, setModalLogin, setEditMode }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,6 +26,21 @@ const Offer = () => {
     };
     fetchData();
   }, [id]);
+
+  let history = useHistory();
+
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(
+        `https://benalgo-vinted-server.herokuapp.com/offer/delete/${id}`,
+        { headers: { authorization: `Bearer ${tokenId}` } }
+      );
+      history.push("/");
+      window.location.reload();
+    } catch (error) {
+      console.log(error.mesage);
+    }
+  };
 
   return isLoading ? (
     <div className="roller-container">
@@ -50,7 +65,9 @@ const Offer = () => {
         />
         <div className="Offer-details">
           <div>
-            <span className="Offer-price">{data.product_price} €</span>
+            <span className="Offer-price">
+              {data.product_price.toFixed(2)} €
+            </span>
             <ul className="Offer-list">
               {data.product_details.map((item, index) => {
                 const keys = Object.keys(item);
@@ -88,7 +105,40 @@ const Offer = () => {
               <span>{data.owner.account.username}</span>
             </div>
           </div>
-          <button className="Offer-btn">Acheter</button>
+          <button
+            className="Offer-btn"
+            onClick={() => {
+              if (tokenId) {
+                history.push("/payment", { offer: data });
+                setEditMode({ active: false, offer: {} });
+              } else {
+                setModalLogin(true);
+              }
+            }}
+          >
+            Acheter
+          </button>
+          {tokenId && userId === data.owner._id && (
+            <div className="Offer-btn-container">
+              <button
+                className="Offer-btn edit"
+                onClick={() => {
+                  history.push("/publish");
+                  setEditMode({ active: true, offer: data });
+                }}
+              >
+                Modifier
+              </button>
+              <button
+                className="Offer-btn delete"
+                onClick={() => {
+                  handleDelete();
+                }}
+              >
+                Supprimer
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <div></div>

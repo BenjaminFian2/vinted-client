@@ -82,6 +82,23 @@
   margin-top: 20px;
 }
 
+.Offer-btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.edit {
+  width: 35%;
+  font-size: 14px;
+  background-color: #0069d9;
+}
+
+.delete {
+  width: 35%;
+  font-size: 14px;
+  background-color: #c82333;
+}
+
 .Offer-btn {
   cursor: pointer;
 }

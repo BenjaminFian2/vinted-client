@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Signup = ({
   setUser,
+  setUser_Id,
   setModalRegister,
   setModalLogin,
   redirectPublish,
@@ -29,6 +30,10 @@ const Signup = ({
       if (response.data.token) {
         setUser(response.data.token);
       }
+      if (response.data._id) {
+        setUser_Id(response.data._id);
+      }
+
       if (redirectPublish) {
         history.push("/publish");
       }

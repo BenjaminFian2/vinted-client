@@ -12,8 +12,8 @@ const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
 const Header = ({
-  token,
   setUser,
+  setUser_Id,
   setNumItems,
   queries,
   setQueries,
@@ -101,11 +101,12 @@ const Header = ({
         </div>
       </div>
       <div className="Header-container-buttons">
-        {token ? (
+        {tokenId ? (
           <button
             className="Header-disconnected"
             onClick={() => {
               setUser(null);
+              setUser_Id(null);
               if (window.location.pathname !== "/") {
                 history.push("/");
               } else {
@@ -127,7 +128,7 @@ const Header = ({
             S'inscrire
           </button>
         )}
-        {!token && (
+        {!tokenId && (
           <button
             className="Header-login"
             onClick={() => {

@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Login = ({
   setUser,
+  setUser_Id,
   setModalLogin,
   setModalRegister,
   redirectPublish,
@@ -23,6 +24,8 @@ const Login = ({
       );
       const token = response.data.token;
       setUser(token);
+      const id = response.data._id;
+      setUser_Id(id);
       if (redirectPublish) {
         history.push("/publish");
       }

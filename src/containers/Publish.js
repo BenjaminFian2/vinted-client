@@ -1,5 +1,5 @@
 import "./Publish.css";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -54,7 +54,7 @@ const Publish = ({ tokenId }) => {
     }
   };
 
-  return (
+  return tokenId ? (
     <div className="Publish">
       <div className="Publish-container">
         <h2>Vends ton article</h2>
@@ -238,6 +238,8 @@ const Publish = ({ tokenId }) => {
         </form>
       </div>
     </div>
+  ) : (
+    <Redirect to="/" />
   );
 };
 

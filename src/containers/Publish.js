@@ -36,13 +36,13 @@ const Publish = ({ tokenId }) => {
       formData.append("color", data.color);
       formData.append("picture", data.picture);
 
-      await axios.post(
+      const response = await axios.post(
         `${process.env.REACT_APP_URL_API}/offer/publish`,
         formData,
         { headers: { authorization: `Bearer ${tokenId}` } }
       );
 
-      history.push("/");
+      history.push(`/offer/${response.data._id}`);
     } catch (error) {
       if (error.response.status === 400) {
         setErrormessage("Veuillez renseigner tous les champs");

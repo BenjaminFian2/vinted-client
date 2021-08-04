@@ -98,9 +98,9 @@ input:focus {
 }
 
 .Publish-file-input {
-  display: none;
-  /* outline: none;
-  appearance: none; */
+  opacity: 0;
+  width: 0;
+  /* display: none; */
 }
 
 .Publish-container-input-text {

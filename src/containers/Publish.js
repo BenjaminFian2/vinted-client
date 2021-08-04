@@ -156,6 +156,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
                   <input
                     id="file"
                     type="file"
+                    required
                     className="Publish-file-input"
                     onChange={(event) => {
                       const obj = { ...data };
@@ -270,8 +271,9 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
               <div className="Publish-input-checkbox">
                 <input
                   defaultValue={data.price}
+                  min="1"
                   max="500"
-                  type="text"
+                  type="number"
                   placeholder="0,00 €"
                   onChange={(event) => {
                     const obj = { ...data };

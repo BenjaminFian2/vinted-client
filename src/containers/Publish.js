@@ -174,6 +174,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
               <input
                 defaultValue={data.title}
                 type="text"
+                required
                 placeholder="ex: Chemise Sézane verte"
                 onChange={(event) => {
                   const obj = { ...data };
@@ -189,6 +190,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
                 name="description"
                 id="description"
                 rows="5"
+                required
                 placeholder="ex: porté quelquefois, taille correctement"
                 onChange={(event) => {
                   const obj = { ...data };
@@ -204,6 +206,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
               <input
                 defaultValue={data.brand}
                 type="text"
+                required
                 placeholder="ex: Zara"
                 onChange={(event) => {
                   const obj = { ...data };
@@ -217,6 +220,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
               <input
                 defaultValue={data.size}
                 type="text"
+                required
                 placeholder="ex: L / 40 / 12"
                 onChange={(event) => {
                   const obj = { ...data };
@@ -230,6 +234,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
               <input
                 defaultValue={data.color}
                 type="text"
+                required
                 placeholder="ex: Fushia"
                 onChange={(event) => {
                   const obj = { ...data };
@@ -243,6 +248,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
               <input
                 defaultValue={data.condition}
                 type="text"
+                required
                 placeholder="ex: Neuf avec étiquette"
                 onChange={(event) => {
                   const obj = { ...data };
@@ -256,6 +262,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
               <input
                 defaultValue={data.city}
                 type="text"
+                required
                 placeholder="ex: Paris"
                 onChange={(event) => {
                   const obj = { ...data };
@@ -274,6 +281,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
                   min="1"
                   max="500"
                   type="number"
+                  required
                   placeholder="0,00 €"
                   onChange={(event) => {
                     const obj = { ...data };

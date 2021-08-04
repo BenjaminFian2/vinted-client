@@ -270,6 +270,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
               <div className="Publish-input-checkbox">
                 <input
                   defaultValue={data.price}
+                  max="500"
                   type="text"
                   placeholder="0,00 €"
                   onChange={(event) => {

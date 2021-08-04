@@ -35,6 +35,7 @@ const Offer = ({ tokenId, userId, setModalLogin, setEditMode }) => {
         `https://benalgo-vinted-server.herokuapp.com/offer/delete/${id}`,
         { headers: { authorization: `Bearer ${tokenId}` } }
       );
+      console.log(response);
       history.push("/");
       window.location.reload();
     } catch (error) {

@@ -32,7 +32,7 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
         picture: null,
       });
     }
-  }, []);
+  }, [editMode]);
 
   const [errorMessage, setErrormessage] = useState("");
   const [checked, setChecked] = useState(false);
@@ -43,10 +43,24 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
     event.preventDefault();
     if (editMode.active) {
       try {
+        const formData = new FormData();
+        formData.append("title", data.title);
+        formData.append("description", data.description);
+        formData.append("price", data.price);
+        formData.append("condition", data.condition);
+        formData.append("city", data.city);
+        formData.append("brand", data.brand);
+        formData.append("size", data.size);
+        formData.append("color", data.color);
+        if (data.picture) {
+          formData.append("picture", data.picture);
+        }
         const response = await axios.put(
           `https://benalgo-vinted-server.herokuapp.com/offer/update/${editMode.offer._id}`,
+          formData,
           { headers: { authorization: `Bearer ${tokenId}` } }
         );
+        console.log(response);
         setEditMode({ active: false, offer: {} });
         history.push(`/offer/${editMode.offer._id}`);
       } catch (error) {
@@ -70,7 +84,6 @@ const Publish = ({ tokenId, editMode, setEditMode }) => {
           formData,
           { headers: { authorization: `Bearer ${tokenId}` } }
         );
-
         history.push(`/offer/${response.data._id}`);
       } catch (error) {
         if (error.response.status === 400) {

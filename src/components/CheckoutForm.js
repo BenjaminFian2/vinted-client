@@ -16,12 +16,6 @@ const CheckoutForm = ({ userId, price, description }) => {
       const stripeResponse = await stripe.createToken(cardElement, {
         name: userId,
       });
-      // const response = await axios.post(
-      //   `${process.env.REACT_APP_URL_API}/payment`,
-      //   {
-      //     stripeToken,
-      //   }
-      // );
       const response = await axios.post(
         `https://benalgo-vinted-server.herokuapp.com/payment`,
         {

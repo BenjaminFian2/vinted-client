@@ -24,7 +24,7 @@ const Signup = ({
     event.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL_API}/user/signup`,
+        `https://benalgo-vinted-server.herokuapp.com/user/signup`,
         data
       );
       if (response.data.token) {

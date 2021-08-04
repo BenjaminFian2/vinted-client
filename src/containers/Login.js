@@ -19,7 +19,7 @@ const Login = ({
     event.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL_API}/user/login`,
+        `https://benalgo-vinted-server.herokuapp.com/user/login`,
         data
       );
       const token = response.data.token;

@@ -74,3 +74,5 @@ v2-> transform page login and signup to modal, add new filters (price-min, price
 v3-> responsive for width 1800px, 1024px, 768px, 320px
 
 v4-> add a publish offer page who can be access only when connected.
+
+vfinal-> add a payment page and a user can delete or modify his own offer.
